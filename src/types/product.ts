@@ -9,3 +9,10 @@ export type Product = {
   brand?: string;
   category?: string;
 };
+
+export type ProductsResponse = {
+  products: Product[];
+  total: number;
+  skip: number;
+  limit: number;
+};

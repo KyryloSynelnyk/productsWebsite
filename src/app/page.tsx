@@ -1,15 +1,6 @@
 import Link from "next/link";
 import ProductGridClient from "../components/ProductGridClient";
-import type { Product } from "../types/product";
-
-// Using shared Product type from src/types/product
-
-type ProductsResponse = {
-  products: Product[];
-  total: number;
-  skip: number;
-  limit: number;
-};
+import type { Product, ProductsResponse } from "../types/product";
 
 async function getCategories(): Promise<string[]> {
   // Prefer the category-list endpoint which returns plain strings.

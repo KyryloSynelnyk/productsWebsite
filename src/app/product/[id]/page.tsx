@@ -1,4 +1,5 @@
-import ProductCheckout, { type Product } from "@/components/ProductCheckout";
+import ProductCheckout from "@/components/ProductCheckout";
+import type { Product } from "../../../types/product";
 import Link from "next/link";
 
 async function getProduct(productId: number): Promise<Product> {

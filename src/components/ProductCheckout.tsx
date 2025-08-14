@@ -3,18 +3,7 @@
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-
-export type Product = {
-  id: number;
-  title: string;
-  description: string;
-  price: number; // USD
-  thumbnail?: string;
-  images?: string[];
-  rating?: number;
-  brand?: string;
-  category?: string;
-};
+import type { Product } from "../types/product";
 
 const PROMO_CODES: Record<string, { type: "percent" | "fixed"; value: number; label: string }> = {
   SAVE10: { type: "percent", value: 10, label: "Save 10%" },
