@@ -158,7 +158,7 @@ export default async function Home({
             ))}
           </select>
           <div className="flex gap-2 flex-nowrap items-center">
-            <button className="rounded-lg px-4 py-2 font-medium shadow hover:shadow-md active:scale-[0.98] transition whitespace-nowrap" type="submit" style={{ backgroundColor: "var(--btn-bg)", color: "var(--btn-text)" }}>
+            <button className="rounded-lg px-4 py-2 font-medium hover:shadow-md hover:opacity-90 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--input-border)] cursor-pointer transition whitespace-nowrap" type="submit" style={{ backgroundColor: "var(--btn-bg)", color: "var(--btn-text)" }}>
               Apply
             </button>
             <Link href="/" className="rounded-lg px-3 py-2 font-medium hover:shadow-md active:scale-[0.98] transition text-center whitespace-nowrap" style={{ backgroundColor: "var(--panel-bg)", border: "1px solid var(--input-border)" }}>

@@ -44,7 +44,7 @@ export default function ThemeToggle() {
       type="button"
       onClick={toggle}
       aria-label="Toggle color theme"
-      className="inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/15 bg-white/70 dark:bg-black/30 px-3 py-1.5 text-sm hover:shadow-sm active:scale-[0.98] transition"
+      className="inline-flex items-center gap-2 rounded-lg border border-black/10 dark:border-white/15 bg-white/70 dark:bg-black/30 px-3 py-1.5 text-sm hover:shadow-md hover:bg-black/5 dark:hover:bg-white/10 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--input-border)] cursor-pointer transition"
       title={theme === "dark" ? "Switch to light" : "Switch to dark"}
     >
       <span className="i-theme w-4 h-4" aria-hidden>

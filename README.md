@@ -41,8 +41,6 @@ Visit http://localhost:3000
 ## Notable Implementation Details
 
 - __Theming__: `html.dark` toggles CSS variables in `globals.css`. Components use variables like `--background`, `--foreground`, `--card-bg`, etc., instead of hard-coded colors.
-- __FOUC prevention__: An inline script in `src/app/layout.tsx` sets the theme class before hydration.
-- __Type safety__: Shared `Product` type in `src/types/product.ts`. Avoids `any` in props (`ProductGridClient` and `page.tsx`).
 - __Image modal__: Backdrop click closes, ESC closes, and Arrow keys navigate between images.
 
 ## Promo Codes

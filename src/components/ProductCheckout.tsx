@@ -31,8 +31,12 @@ export default function ProductCheckout({ product }: { product: Product }) {
   const [promoInput, setPromoInput] = useState("");
   const [appliedPromo, setAppliedPromo] = useState<string | null>(null);
   const [promoError, setPromoError] = useState<string | null>(null);
+  const [imgIdx, setImgIdx] = useState(0);
 
-  const imageUrl = product.images?.[0] || product.thumbnail || "/placeholder.svg";
+  const images = (product.images && product.images.length > 0)
+    ? product.images
+    : (product.thumbnail ? [product.thumbnail] : ["/placeholder.svg"]);
+  const displayImage = images[imgIdx % images.length];
 
   const subtotal = useMemo(() => product.price * qty, [product.price, qty]);
 
@@ -81,12 +85,32 @@ export default function ProductCheckout({ product }: { product: Product }) {
       >
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-black/5">
           <Image
-            src={imageUrl}
+            src={displayImage}
             alt={product.title}
             fill
-            className="object-cover transition-transform duration-500 hover:scale-105"
+            className="object-contain transition-transform duration-500"
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
+          {images.length > 1 && (
+            <>
+              <button
+                aria-label="Previous image"
+                onClick={() => setImgIdx((i) => (i - 1 + images.length) % images.length)}
+                className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full px-2 py-2 text-sm shadow hover:shadow-md cursor-pointer"
+                style={{ backgroundColor: "var(--panel-bg)", border: "1px solid var(--input-border)" }}
+              >
+                ‹
+              </button>
+              <button
+                aria-label="Next image"
+                onClick={() => setImgIdx((i) => (i + 1) % images.length)}
+                className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full px-2 py-2 text-sm shadow hover:shadow-md cursor-pointer"
+                style={{ backgroundColor: "var(--panel-bg)", border: "1px solid var(--input-border)" }}
+              >
+                ›
+              </button>
+            </>
+          )}
         </div>
         <div className="mt-5 flex items-start justify-between gap-4">
           <div>
@@ -182,7 +206,7 @@ export default function ProductCheckout({ product }: { product: Product }) {
             />
             <button
               type="submit"
-              className="rounded-lg px-4 py-2 font-medium shadow hover:shadow-md active:scale-[0.98] transition"
+              className="rounded-lg px-4 py-2 font-medium hover:shadow-md hover:opacity-90 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--input-border)] cursor-pointer transition"
               style={{ backgroundColor: "var(--btn-bg)", color: "var(--btn-text)" }}
             >
               Apply
