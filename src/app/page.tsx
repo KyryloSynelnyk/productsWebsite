@@ -3,13 +3,14 @@ import ProductGridClient from "../components/ProductGridClient";
 import type { Product, ProductsResponse } from "../types/product";
 
 async function getCategories(): Promise<string[]> {
-  // Prefer the category-list endpoint which returns plain strings.
+
   const res = await fetch("https://dummyjson.com/products/category-list", { cache: "force-cache" });
   if (!res.ok) throw new Error("Failed to load categories");
   const data = await res.json();
-  // Some API variants may return objects { slug, name, url }. Normalize to names/slug strings.
+
   if (Array.isArray(data)) {
     if (typeof data[0] === "string" || data.length === 0) return data as string[];
+    
     return (data as Array<{ slug?: string; name?: string }>).map((c) => c.slug || c.name || "").filter(Boolean);
   }
   return [];
@@ -39,8 +40,6 @@ async function getProducts(params: {
     "title,price,description,images,thumbnail,rating,brand,category"
   );
 
-  // Sorting is documented for the base /products endpoint. We'll include for others;
-  // if API ignores it, we can sort client-side as a fallback.
   if (sortBy) {
     url.searchParams.set("sortBy", sortBy);
     url.searchParams.set("order", order);
