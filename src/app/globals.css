@@ -27,7 +27,7 @@
   }
 }
 
-/* Support toggling via .dark on <html>. Place after media rule so it wins. */
+/* Support toggling via .dark on <html>. */
 html.dark {
   --background: #0a0a0a;
   --foreground: #ededed;
